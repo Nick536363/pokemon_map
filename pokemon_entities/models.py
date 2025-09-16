@@ -4,6 +4,8 @@ from datetime import datetime
 # your models here
 class Pokemon(models.Model):
     title = models.CharField(max_length=50, default="Покемон")
+    title_en = models.CharField(max_length=50, default="Pokemon")
+    title_jp = models.CharField(max_length=50, default="ポケモン")
     description = models.CharField(max_length=1000, blank=False, default="Описание отсутствует")
     image = models.ImageField(null=True, blank=True, upload_to="pokemons")
     def __str__(self):
