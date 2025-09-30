@@ -1,7 +1,7 @@
 from django.db import models  # noqa F401
 from datetime import datetime
 
-# your models here
+
 class Pokemon(models.Model):
     title = models.CharField("Русское название", 
         max_length=50, 
