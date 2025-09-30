@@ -8,13 +8,13 @@ class Pokemon(models.Model):
     title_jp = models.CharField("Японское название", max_length=50, null=True)
     description = models.CharField("Описание", max_length=1000, default="Описание отсутствует")
     previous_evolution = models.ForeignKey("self", verbose_name="Предыдущая эволюция", blank=True, related_name="evolutions", null=True, on_delete=models.PROTECT)
-    image = models.ImageField("Изображение", null=True, blank=True, upload_to="pokemons")
+    image = models.ImageField("Изображение", null=True, upload_to="pokemons")
     def __str__(self):
         return f"{self.title}"
 
 
 class PokemonEntity(models.Model):
-    pokemon = models.ForeignKey(Pokemon, verbose_name="Покемон", on_delete=models.CASCADE, null=True, blank=True)
+    pokemon = models.ForeignKey(Pokemon, verbose_name="Покемон", on_delete=models.CASCADE)
     lat = models.FloatField("Широта")
     lon = models.FloatField("Долгота")
     appeared_at = models.DateTimeField("Время появление", default=datetime.now())
