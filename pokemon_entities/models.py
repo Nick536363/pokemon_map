@@ -1,66 +1,26 @@
-from django.db import models  # noqa F401
-from datetime import datetime
+from django.db import models
 
 
 class Pokemon(models.Model):
-    title = models.CharField("Русское название", 
-        max_length=50
-    )
-    title_en = models.CharField("Английское название", 
-        max_length=50, 
-        blank=True
-    )
-    title_jp = models.CharField("Японское название", 
-        max_length=50, 
-        blank=True
-    )
+    title = models.CharField("Русское название", max_length=50)
+    title_en = models.CharField("Английское название", max_length=50, blank=True)
+    title_jp = models.CharField("Японское название", max_length=50, blank=True)
     description = models.TextField("Описание")
-    previous_evolution = models.ForeignKey(to="self", 
-        verbose_name="Предыдущая эволюция", 
-        related_name="next_evolutions", 
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True
-    )
-    image = models.ImageField("Изображение", 
-        null=True, 
-        upload_to="pokemons"
-    )
+    previous_evolution = models.ForeignKey(to="self", verbose_name="Предыдущая эволюция", related_name="next_evolutions", on_delete=models.PROTECT, null=True, blank=True)
+    image = models.ImageField("Изображение", null=True, upload_to="pokemons")
+
     def __str__(self):
         return f"{self.title}"
 
 
 class PokemonEntity(models.Model):
-    pokemon = models.ForeignKey(Pokemon, 
-        verbose_name="Покемон", 
-        on_delete=models.CASCADE, 
-        related_name="pokemon_entities"
-    )
+    pokemon = models.ForeignKey(Pokemon, verbose_name="Покемон", on_delete=models.CASCADE, related_name="pokemon_entities")
     lat = models.FloatField("Широта")
     lon = models.FloatField("Долгота")
-    appeared_at = models.DateTimeField(
-        "Время появление"
-    )
-    disappeared_at = models.DateTimeField(
-        "Время исчезновения"
-    )
-    level = models.IntegerField(
-        "Уровень",
-        blank=True
-    )
-    health = models.IntegerField(
-        "Очки здоровья", 
-        blank=True
-    )
-    damage = models.IntegerField(
-        "Очки урона", 
-        blank=True
-    )
-    defense = models.IntegerField(
-        "Очки защиты", 
-        blank=True
-    )
-    stamina = models.IntegerField(
-        "Очки выносливости", 
-        blank=True
-    )
+    appeared_at = models.DateTimeField("Время появление")
+    disappeared_at = models.DateTimeField("Время исчезновения")
+    level = models.IntegerField("Уровень", blank=True)
+    health = models.IntegerField("Очки здоровья", blank=True)
+    damage = models.IntegerField("Очки урона", blank=True)
+    defense = models.IntegerField("Очки защиты", blank=True)
+    stamina = models.IntegerField("Очки выносливости", blank=True)
