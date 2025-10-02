@@ -78,11 +78,11 @@ def show_pokemon(request, pokemon_id):
             "img_url": get_img_url(request, requested_pokemon.previous_evolution.image),
             "pokemon_id": requested_pokemon.previous_evolution.id
         }
-    if requested_pokemon.evolutions.first():
+    if requested_pokemon.next_evolutions.first():
         next_evolution = {
-            "title_ru": requested_pokemon.evolutions.first().title,
-            "img_url": get_img_url(request, requested_pokemon.evolutions.first().image),
-            "pokemon_id": requested_pokemon.evolutions.first().id
+            "title_ru": requested_pokemon.next_evolutions.first().title,
+            "img_url": get_img_url(request, requested_pokemon.next_evolutions.first().image),
+            "pokemon_id": requested_pokemon.next_evolutions.first().id
         }
     pokemon = {
         "pokemon_id": requested_pokemon.id,
