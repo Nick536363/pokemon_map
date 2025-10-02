@@ -16,12 +16,12 @@ class Pokemon(models.Model):
         null=True
     )
     description = models.TextField("Описание")
-    previous_evolution = models.ForeignKey("self", 
+    previous_evolution = models.ForeignKey(to="self", 
         verbose_name="Предыдущая эволюция", 
-        blank=True, 
         related_name="evolutions", 
-        null=True, 
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
     )
     image = models.ImageField("Изображение", 
         null=True, 
