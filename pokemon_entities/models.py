@@ -8,11 +8,11 @@ class Pokemon(models.Model):
     )
     title_en = models.CharField("Английское название", 
         max_length=50, 
-        null=True
+        blank=True
     )
     title_jp = models.CharField("Японское название", 
         max_length=50, 
-        null=True
+        blank=True
     )
     description = models.TextField("Описание")
     previous_evolution = models.ForeignKey(to="self", 
