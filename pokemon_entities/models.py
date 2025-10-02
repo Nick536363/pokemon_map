@@ -4,8 +4,7 @@ from datetime import datetime
 
 class Pokemon(models.Model):
     title = models.CharField("Русское название", 
-        max_length=50, 
-        default="Покемон"
+        max_length=50
     )
     title_en = models.CharField("Английское название", 
         max_length=50, 
@@ -40,12 +39,10 @@ class PokemonEntity(models.Model):
     lat = models.FloatField("Широта")
     lon = models.FloatField("Долгота")
     appeared_at = models.DateTimeField(
-        "Время появление", 
-        default=datetime.now()
+        "Время появление"
     )
     disappeared_at = models.DateTimeField(
-        "Время исчезновения", 
-        default=datetime.now()
+        "Время исчезновения"
     )
     level = models.IntegerField(
         "Уровень",
